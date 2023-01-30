@@ -1,11 +1,14 @@
 {
     "name": "pochlib",
     "version": "1.0.0",
-    "description": "",
+    "description": "Application permettant de rechercher les livres en ligne et de les  récupérer à la librairie.",
     "main": "index.js",
     "scripts": {
-      "sass": "sass --watch ./sass/main.scss:./public/css/style.css --style expanded --no-source-map"
+      "sass": "sass --watch C:/Users/natha/git/PochLib/css/main.scss:C:/Users/natha/git/PochLib/css/style.css",
+      "prefix": "postcss C:/Users/natha/git/PochLib/css/style.css --use autoprefixer -d C:/Users/natha/git/PochLib/css/prefixed/"
     },
-    "author": "",
-    "license": "ISC"
+      
+    "author": "Nathalie Mallet",
+    "license": "ISC",
+    "browserslist":"last 4 versions"
   }
