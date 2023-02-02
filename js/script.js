@@ -247,6 +247,7 @@ function addIconTrashAction(idItem, parentElt) {
   });
 }
 
+// Ne pas pouvoir ajouter deux fois le même livre
 function isInSession(idItem) {
   if (sessionStorage.getItem(idItem) !== null) {
     alert(AVOID_DUPLICATES_MSG);
@@ -262,6 +263,7 @@ function saveBook(book, idItem) {
     book.createBookPresentation(parentDiv);
     toggleIcons();
     addIconTrashAction(idItem, parentDiv);
+    //sessionStorage.removeItem(idItem);
   }
 }
 
@@ -325,6 +327,7 @@ function displayPochlist() {
     const book = new Book(sessionObject.title, sessionObject.idISBN, sessionObject.idItem, sessionObject.author, sessionObject.description, sessionObject.image);
     book.createBookPresentation(parentDiv);
     addIconTrashAction(sessionObject.idItem, parentDiv);
+    
   }
   toggleIcons();
 }
