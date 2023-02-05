@@ -3,6 +3,7 @@ const EMPTY_FIELDS_MSG = "Merci de remplir au moins un des champs proposés";
 const NO_INFO = "Information manquante";
 const AVOID_DUPLICATES_MSG = "Vous ne pouvez ajouter deux fois le même livre";
 
+// create constructor method
 class Book {
   constructor(title, idISBN, idItem, author, description, image) {
     this.title = title;
@@ -58,6 +59,9 @@ function insertElement(elt) {
   parentDiv.insertBefore(elt, target);
 }
 
+// Create search form
+
+// Fields
 function createField(label, input) {
   const field = document.createElement("div");
   field.classList.add("form__field");
@@ -66,6 +70,7 @@ function createField(label, input) {
   return field;
 }
 
+//Form
 function createForm() {
   const form = document.createElement("form");
   form.classList.add("form");
@@ -120,7 +125,7 @@ function createForm() {
   insertElement(form);
   form.style.display = "none";
 }
-
+// Display
 function displayForm() {
   const btn = document.getElementById("addBook");
   const form = document.getElementsByClassName("form")[0];
@@ -132,6 +137,7 @@ function displayForm() {
   }
 }
 
+// Button creation "Ajouter un livre"
 function addButton() {
   const addBookBtn = document.createElement("button");
   addBookBtn.innerHTML = "Ajouter un livre";
@@ -141,6 +147,7 @@ function addButton() {
   addBookBtn.onclick = displayForm;
 }
 
+// Warning message
 function createWarningMessage(msgId, msg) {
   const message = document.createElement("div");
   message.id = msgId;
@@ -150,6 +157,7 @@ function createWarningMessage(msgId, msg) {
   return message;
 }
 
+// Display of results
 function createResultsContainer() {
   const resultsContainer = document.createElement("div");
   resultsContainer.id = "res-output";
@@ -169,6 +177,7 @@ function createResultsContainer() {
   insertElement(resultsContainer);
 }
 
+// Pochlist result display
 function createPochlistContainer() {
   const pochlistContainer = document.getElementById("content");
   const pochlistGrid = document.createElement("div");
@@ -177,6 +186,7 @@ function createPochlistContainer() {
   pochlistContainer.appendChild(pochlistGrid);
 }
 
+// resource loading
 function onload() {
   createForm();
   addButton();
@@ -185,8 +195,10 @@ function onload() {
   displayPochlist();
 }
 
+// resource display
 window.addEventListener("load", onload);
 
+//set book url with google API
 function setBookURL() {
   let bookURL = "https://www.googleapis.com/books/v1/volumes?q=";
   const resultsContainer = document.getElementById("res-output");
@@ -218,6 +230,7 @@ function setBookURL() {
   return bookURL
 }
 
+// icon management
 function toggleIcons() {
   const icons = document.querySelectorAll("#pochlist-grid i");
   for (const icon of icons) {
@@ -230,6 +243,7 @@ function toggleIcons() {
   }
 }
 
+//Save book icon
 function addIconBookmarkAction(books) {
   for (let i = 0; i < books.length; i++) {
     const iconBkmrk = document.getElementsByClassName("fa-bookmark")[i];
@@ -239,6 +253,7 @@ function addIconBookmarkAction(books) {
   }
 }
 
+// book deletion icon
 function addIconTrashAction(idItem, parentElt) {
   const section = parentElt.lastChild;
   const iconTrash = section.getElementsByTagName("i")[1];
@@ -247,7 +262,7 @@ function addIconTrashAction(idItem, parentElt) {
   });
 }
 
-// Ne pas pouvoir ajouter deux fois le même livre
+//Not being able to add the same book twice
 function isInSession(idItem) {
   if (sessionStorage.getItem(idItem) !== null) {
     alert(AVOID_DUPLICATES_MSG);
@@ -256,6 +271,7 @@ function isInSession(idItem) {
   return false;
 }
 
+//Save a book in pochlist
 function saveBook(book, idItem) {
   const parentDiv = document.getElementById("pochlist-grid");
   if (!isInSession(idItem)) {
@@ -263,10 +279,10 @@ function saveBook(book, idItem) {
     book.createBookPresentation(parentDiv);
     toggleIcons();
     addIconTrashAction(idItem, parentDiv);
-    //sessionStorage.removeItem(idItem);
   }
 }
 
+// remove a book in pochlist
 function removeBook(idItem) {
   const targetElt = document.querySelectorAll("#pochlist-grid > section");
   targetElt.forEach((elt) => {
@@ -278,6 +294,7 @@ function removeBook(idItem) {
   });
 }
 
+// display result 
 function displayResults(data, list) {
   let item, title, id, idHidden, author, description, image;
   let books = [];
@@ -319,6 +336,7 @@ function displayResults(data, list) {
   addIconBookmarkAction(books);
 }
 
+// display the pochlist
 function displayPochlist() {
   const parentDiv = document.getElementById("pochlist-grid");
   const keys = Object.keys(sessionStorage);
@@ -332,6 +350,8 @@ function displayPochlist() {
   toggleIcons();
 }
 
+
+// search a book
 function searchBook() {
   const resultsContainer = document.getElementById("res-output");
   const listOutput = document.getElementById("list-grid");
@@ -362,12 +382,14 @@ function searchBook() {
   }
 }
 
+//clean output list
 function cleanOutputList(parentElt) {
   while (parentElt.lastChild) {
     parentElt.removeChild(parentElt.lastChild);
   }
 }
 
+// cancel search
 function cancelSearch(form) {
   const parentElt = document.getElementById("list-grid");
   const btn = document.getElementById("addBook");

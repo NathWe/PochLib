@@ -19,7 +19,8 @@ $font-size: (
   p: 0.675rem
 );
 
-$screen-md: 768px; // Defining breakpoints for @media queries
+// Defining breakpoints for @media queries
+$screen-md: 768px; 
 $screen-lg: 1200px;
 @mixin screen-md {
   @media screen and (min-width : $screen-md) and (max-width : $screen-lg) {
@@ -54,6 +55,7 @@ $screen-lg: 1200px;
   @return hsl($hue, $sat, $light);
 }
 
+// General settings
 * {
   font-family: 'Montserrat', sans-serif;
   @include screen-md {
@@ -92,6 +94,7 @@ body {
   }
 }
 
+//Logo position and size setting
 .logo {
   display: none;
   @include screen-md-lg {
@@ -103,6 +106,7 @@ body {
   };
 }
 
+//Settings for title : position, frame, background color.
 .title {
   margin-top: $margin-default*2;
   padding: $padding-min*6;
@@ -120,6 +124,7 @@ body {
   }
 }
 
+//Settings h2 "Nouveau Livre"
 h2 {
   text-align: center;
   font-size: map-get($font-size, h2);
@@ -127,6 +132,7 @@ h2 {
   margin-bottom: $margin-default*2;
 }
 
+//Button settings
 .btn {
   padding: $padding-min*3 $padding-min*5;
   margin-bottom: $margin-default*2;
@@ -208,12 +214,14 @@ hr {
   }
 }
 
+//Warning Message settings
 .warning-msg {
   color: $colour-contrast;
   font-size: map-get($font-size, default);
   margin-bottom: $margin-default*2;
 }
 
+//Result Layout
 .res-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -226,6 +234,7 @@ hr {
   }
 }
 
+//icon settings
 .fas {
   color: $colour-button;
   padding-left: $padding-default;
@@ -238,6 +247,7 @@ hr {
   }
 }
 
+// result settings
 .result {
   background-color: $colour-accent-base;
   padding: $padding-min*5;
