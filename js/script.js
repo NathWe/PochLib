@@ -14,6 +14,7 @@ class Book {
     this.image = image;
   }
 
+  //creation of elements
   createBookPresentation(parentElt) {
     const section = document.createElement("section");
     section.classList.add("result");
@@ -125,6 +126,7 @@ function createForm() {
   insertElement(form);
   form.style.display = "none";
 }
+
 // Display
 function displayForm() {
   const btn = document.getElementById("addBook");
@@ -137,7 +139,7 @@ function displayForm() {
   }
 }
 
-// Button creation "Ajouter un livre"
+// creation button  "Ajouter un livre"
 function addButton() {
   const addBookBtn = document.createElement("button");
   addBookBtn.innerHTML = "Ajouter un livre";
@@ -186,7 +188,7 @@ function createPochlistContainer() {
   pochlistContainer.appendChild(pochlistGrid);
 }
 
-// resource loading
+// Call the functions needed to load the page. it allows you to initialize the form, add button, create result container, create pochlist container and display pochlist
 function onload() {
   createForm();
   addButton();
@@ -195,7 +197,7 @@ function onload() {
   displayPochlist();
 }
 
-// resource display
+// Loading the page so that the necessary functions are loaded
 window.addEventListener("load", onload);
 
 //set book url with google API
@@ -227,7 +229,7 @@ function setBookURL() {
   queryString = queryString.replace("&", "+");
   queryString = queryString.replace(/=/g, ":");
   bookURL += queryString;
-  return bookURL
+  return bookURL;
 }
 
 // icon management
@@ -378,7 +380,7 @@ function searchBook() {
       } else if (this.status !== 200) {
         console.error("La requête réseau a échoué. Statut renvoyé " + this.status);
       }
-    }
+    };
   }
 }
 

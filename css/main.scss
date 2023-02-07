@@ -6,11 +6,12 @@ $colour-index: 5%;
 $colour-accent-base: darken($colour-primary,$colour-index);
 $colour-accent-light: darken($colour-primary, $colour-index*4);
 $colour-accent-dark: darken($colour-primary, $colour-index*12);
-$padding-min: 1.5px; // Defining dimensions
+// Defining dimensions
+$padding-min: 1.5px; 
 $padding-default: $padding-min*10;
 $margin-default: 0.6225rem;
 $font-size: (
-  // Defining font-size
+// Defining font-size
   default: 0.75rem,
   title: 1.2rem,
   h2: 0.9rem,
